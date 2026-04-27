@@ -3,188 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Atik Shams - Portfolio</title>
+    <title>Md. Atik Shams | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Modern, Clean Academic Styling */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #fcfcfc;
         }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 5px;
+
+        /* Navigation */
+        nav {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
         }
-        h2 {
-            color: #2980b9;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 5px;
-            margin-top: 40px;
-        }
-        h3 {
-            color: #34495e;
-            margin-bottom: 5px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .contact-info a {
-            color: #2980b9;
+
+        nav a {
+            color: var(--text-main);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
-        .contact-info a:hover {
-            text-decoration: underline;
+
+        nav a:hover {
+            color: var(--primary);
         }
-        .section-item {
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px 40px; /* Top padding for fixed nav */
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
             margin-bottom: 25px;
         }
-        .date {
-            color: #7f8c8d;
-            font-size: 0.9em;
-            font-style: italic;
+
+        .social-links a {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-right: 15px;
+            transition: color 0.3s ease;
         }
-        .flex-header {
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Profile Image */
+        .hero-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        /* Cards for Education & Experience */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .card-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: flex-start;
+            margin-bottom: 10px;
         }
-        .objective {
-            font-size: 1.1em;
-            text-align: justify;
-            background-color: #fff;
-            padding: 20px;
-            border-left: 4px solid #2980b9;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.2rem;
         }
-        ul {
+
+        .card-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .date-badge {
+            background-color: #e0f2fe;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card ul {
             padding-left: 20px;
+            color: var(--text-muted);
         }
-        .tag {
-            display: inline-block;
-            background-color: #ecf0f1;
-            color: #2c3e50;
-            padding: 3px 8px;
-            border-radius: 3px;
-            font-size: 0.85em;
-            margin: 2px;
+
+        .card ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills Tags */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Publications */
+        .pub-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .pub-item i {
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .card-header {
+                flex-direction: column;
+            }
+            .date-badge {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Md. Atik Shams</h1>
-        <div class="contact-info">
-            <span>Dhaka, Bangladesh</span> | 
-            <a href="mailto:atikshams8@gmail.com">atikshams8@gmail.com</a> | 
-            <a href="https://scholar.google.com/citations?user=Sgb83LoAAAAJ&hl=en" target="_blank">Google Scholar</a>
-        </div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="#skills">Skills</a>
+    </nav>
+
+    <div class="container">
+        
+        <section id="about" class="hero">
+            <div class="hero-content">
+                <h1>Md. Atik Shams</h1>
+                <h2>Computer Science Researcher & Academic</h2>
+                <p>Based in Dhaka, Bangladesh. Contributing to academia through advanced research in machine learning, medical informatics, and engineering, fostering innovation and excellence in education.</p>
+                <div class="social-links">
+                    <a href="mailto:atikshams8@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://scholar.google.com/citations?user=Sgb83LoAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                    <a href="#" title="LinkedIn (Add your link)"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="GitHub (Add your link)"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <img src="profile.jpg" alt="Md. Atik Shams" class="hero-image" onerror="this.src='https://via.placeholder.com/250x250/2563eb/ffffff?text=MAS'">
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Research Assistant (Remote)</div>
+                        <div class="date-badge">Dec 2025 - Present</div>
+                    </div>
+                    <div class="card-subtitle">Montclair State University, NJ, United States</div>
+                    <ul>
+                        <li>Conducting research focused on the intersection of machine learning and medical informatics.</li>
+                        <li>Designing and implementing advanced algorithms to analyze complex medical datasets for improved diagnostic insights.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Research Assistant</div>
+                        <div class="date-badge">Apr 2025 - Mar 2026</div>
+                    </div>
+                    <div class="card-subtitle">CSE, University of Asia Pacific, Dhaka</div>
+                    <ul>
+                        <li>Developed and implemented machine learning models to predict and address student performance issues.</li>
+                        <li>Built a support system aimed at enhancing the academic outcomes of under-performing students.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Teaching Assistant</div>
+                        <div class="date-badge">Jul 2024 - Jan 2025</div>
+                    </div>
+                    <div class="card-subtitle">CSE, University of Asia Pacific, Dhaka</div>
+                    <ul>
+                        <li>Conducted laboratory sessions and evaluated student assignments and exams.</li>
+                        <li>Provided academic guidance and support to students through regular consultations.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title"><i class="fas fa-university"></i> Education</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Master of Science in Computer Science & Engineering</div>
+                        <div class="date-badge">2025</div>
+                    </div>
+                    <div class="card-subtitle">University of Asia Pacific</div>
+                    <p><strong>CGPA: 4.00/4.00 (1st Position)</strong></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Bachelor of Science in Computer Science & Engineering</div>
+                        <div class="date-badge">2024</div>
+                    </div>
+                    <div class="card-subtitle">University of Asia Pacific</div>
+                    <p><strong>CGPA: 3.97/4.00 (2nd Position)</strong></p>
+                    <ul style="margin-top: 10px;">
+                        <li>Awarded the Vice Chancellor's Gold Medal for B.Sc. results.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Selected Q1 Publications</h2>
+            <div class="card">
+                
+                <div class="pub-item">
+                    <i class="fas fa-file-alt"></i>
+                    <div>
+                        <strong>X-Brain: Explainable recognition of brain tumors using robust deep attention CNN.</strong><br>
+                        <span style="color: var(--text-muted)">Tonmoy, M. R., Shams, M. A., et al. (2025). <em>Biomedical Signal Processing and Control (Q1 Journal, Elsevier)</em>.</span>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <i class="fas fa-file-alt"></i>
+                    <div>
+                        <strong>Predictive Modeling and Optimization of WS2 Thin-Film Solar Cells...</strong><br>
+                        <span style="color: var(--text-muted)">Khan, T. M., Shams, M. A., et al. <em>Renewable Energy (Q1 Journal, Elsevier)</em>.</span>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <i class="fas fa-file-alt"></i>
+                    <div>
+                        <strong>A Multisectoral Study of Mpox Epidemiology, Resistance Surveillance, and Policy Gaps...</strong><br>
+                        <span style="color: var(--text-muted)">Mistry, D., ..., Shams, M. A., et al. <em>Clinical Reviews in Allergy & Immunology (Q1 Journal, Springer Nature)</em>.</span>
+                    </div>
+                </div>
+
+                <div class="pub-item" style="border-bottom: none;">
+                    <i class="fas fa-file-alt"></i>
+                    <div>
+                        <strong>Investigating the Impact of Non-Ideal Conditions on the Performance of RbGeI3 Perovskite Solar Cell...</strong><br>
+                        <span style="color: var(--text-muted)">Khan, T. M., Shams, M. A., et al. <em>Materials Advanced (Q1 Journal, Royal Society of Chemistry)</em>.</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Arsenal</h2>
+            
+            <h3 style="margin: 20px 0 10px; color: var(--text-muted); font-size: 1rem;">Programming Languages</h3>
+            <div class="skills-container">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">C</span>
+            </div>
+
+            <h3 style="margin: 20px 0 10px; color: var(--text-muted); font-size: 1rem;">Tools & Frameworks</h3>
+            <div class="skills-container">
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">LaTeX</span>
+                <span class="skill-tag">Jupyter Notebook</span>
+            </div>
+
+            <h3 style="margin: 20px 0 10px; color: var(--text-muted); font-size: 1rem;">Data Analysis</h3>
+            <div class="skills-container">
+                <span class="skill-tag">Pandas</span>
+                <span class="skill-tag">NumPy</span>
+                <span class="skill-tag">Matplotlib</span>
+                <span class="skill-tag">Scikit-learn</span>
+            </div>
+        </section>
+
     </div>
 
-    <div class="objective">
-        <p>To contribute to academia by using my expertise in Computer Science and Engineering through teaching, research, and mentoring, fostering innovation and excellence in education and research.</p>
-    </div>
-
-    <h2>Education</h2>
-    <div class="section-item">
-        <div class="flex-header">
-            <h3>Master of Science in Computer Science and Engineering</h3>
-            <span class="date">2025</span>
-        </div>
-        <div>University of Asia Pacific</div>
-        <div><strong>CGPA: 4.00/4.00 (1st Position)</strong></div>
-    </div>
-    <div class="section-item">
-        <div class="flex-header">
-            <h3>Bachelor of Science in Computer Science and Engineering</h3>
-            <span class="date">2024</span>
-        </div>
-        <div>University of Asia Pacific</div>
-        <div><strong>CGPA: 3.97/4.00 (2nd Position)</strong></div>
-        <ul>
-            <li>Awarded the Vice Chancellor's Gold Medal for B.Sc. results.</li>
-        </ul>
-    </div>
-
-    <h2>Professional Experience</h2>
-    <div class="section-item">
-        <div class="flex-header">
-            <h3>Teaching Assistant</h3>
-            <span class="date">July 2024 - January 2025</span>
-        </div>
-        <div>CSE, University of Asia Pacific, Dhaka, Bangladesh</div>
-        <ul>
-            <li>Conducted laboratory sessions and evaluated student assignments and exams.</li>
-            <li>Provided academic guidance and support to students through regular consultations.</li>
-            <li>Prepared quizzes, invigilated exams, and managed answer sheet collections.</li>
-        </ul>
-    </div>
-    <div class="section-item">
-        <div class="flex-header">
-            <h3>Research Assistant (Remote)</h3>
-            <span class="date">December 2025 - Current</span>
-        </div>
-        <div>Montclair State University, New Jersey, United States</div>
-        <ul>
-            <li>Conducting research focused on the intersection of machine learning and medical informatics.</li>
-            <li>Designing and implementing advanced algorithms to analyze complex medical datasets for improved diagnostic insights.</li>
-        </ul>
-    </div>
-    <div class="section-item">
-        <div class="flex-header">
-            <h3>Research Assistant</h3>
-            <span class="date">April 2025 - March 2026</span>
-        </div>
-        <div>CSE, University of Asia Pacific, Dhaka, Bangladesh</div>
-        <ul>
-            <li>Developed and implemented machine learning models to predict and address student performance issues.</li>
-            <li>Built a support system aimed at enhancing the academic outcomes of under-performing students.</li>
-        </ul>
-    </div>
-
-    <h2>Selected Q1 Publications</h2>
-    <ul>
-        <li>Tonmoy, M. R., Shams, M. A., et al. (2025). X-Brain: Explainable recognition of brain tumors using robust deep attention CNN. <em>Biomedical Signal Processing and Control (Q1 Journal, Elsevier)</em>.</li>
-        <li>Khan, T. M., Shams, M. A., et al. Predictive Modeling and Optimization of WS2 Thin-Film Solar Cells... <em>Renewable Energy (Q1 Journal, Elsevier)</em>.</li>
-        <li>Mistry, D., ..., Shams, M. A., et al. A Multisectoral Study of Mpox Epidemiology, Resistance Surveillance, and Policy Gaps... <em>Clinical Reviews in Allergy & Immunology (Q1 Journal, Springer Nature)</em>.</li>
-        <li>Khan, T. M., Shams, M. A., et al. Investigating the Impact of Non-Ideal Conditions on the Performance of RbGeI3 Perovskite Solar Cell... <em>Materials Advanced (Q1 Journal, Royal Society of Chemistry)</em>.</li>
-    </ul>
-
-    <h2>Technical Skills</h2>
-    <div class="section-item">
-        <strong>Programming Languages:</strong> 
-        <span class="tag">Python</span>
-        <span class="tag">Java</span>
-        <span class="tag">C++</span>
-        <span class="tag">C</span>
-        <br><br>
-        <strong>Tools & Frameworks:</strong>
-        <span class="tag">TensorFlow</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">Django</span>
-        <span class="tag">LaTeX</span>
-        <span class="tag">Jupyter Notebook</span>
-        <br><br>
-        <strong>Data Analysis:</strong>
-        <span class="tag">Pandas</span>
-        <span class="tag">NumPy</span>
-        <span class="tag">Matplotlib</span>
-        <span class="tag">Scikit-learn</span>
-    </div>
-
-    <h2>Achievements</h2>
-    <ul>
-        <li>Awarded the Vice Chancellor's Gold Medal for B.Sc. results.</li>
-        <li>Reviewer for IEEE Access (Q1 Journal) and IEEE COMPAS 2025.</li>
-        <li>3rd place in Heatstroke Prevention Challenge at the 5th International Conference of Activity and Behavior Computing 2023 in Germany.</li>
-        <li>Solved 104 problems on Codeforces, 101 problems on URI, and over 350 problems across platforms.</li>
-    </ul>
+    <footer>
+        <p>&copy; 2026 Md. Atik Shams. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
