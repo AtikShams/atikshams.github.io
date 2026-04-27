@@ -64,7 +64,7 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 80px 20px 40px; /* Top padding for fixed nav */
+            padding: 80px 20px 40px;
         }
 
         /* Hero Section */
@@ -112,7 +112,6 @@
             color: var(--primary);
         }
 
-        /* Profile Image */
         .hero-image {
             width: 250px;
             height: 250px;
@@ -139,7 +138,7 @@
             color: var(--primary);
         }
 
-        /* Cards for Education & Experience */
+        /* Cards */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -236,6 +235,18 @@
             margin-top: 5px;
         }
 
+        /* Clickable links styling */
+        .pub-link {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .pub-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -246,7 +257,6 @@
             margin-top: 40px;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column-reverse;
@@ -356,17 +366,37 @@
                     </ul>
                 </div>
 
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Higher Secondary Certificate (HSC)</div>
+                        <div class="date-badge">2019</div>
+                    </div>
+                    <div class="card-subtitle">Dhaka Board | Group: Science</div>
+                    <p><strong>GPA: 5.00/5.00</strong></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Secondary School Certificate (SSC)</div>
+                        <div class="date-badge">2017</div>
+                    </div>
+                    <div class="card-subtitle">Dhaka Board | Group: Science</div>
+                    <p><strong>GPA: 5.00/5.00</strong></p>
+                </div>
+
             </div>
         </section>
 
         <section id="publications">
-            <h2 class="section-title"><i class="fas fa-book-open"></i> Selected Q1 Publications</h2>
-            <div class="card">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Publications & Proceedings</h2>
+            
+            <h3 style="margin: 20px 0 15px; color: var(--primary); font-size: 1.2rem;">Selected Q1 Publications</h3>
+            <div class="card" style="margin-bottom: 20px;">
                 
                 <div class="pub-item">
                     <i class="fas fa-file-alt"></i>
                     <div>
-                        <strong>X-Brain: Explainable recognition of brain tumors using robust deep attention CNN.</strong><br>
+                        <a href="https://www.researchgate.net/publication/388596843_X-Brain_Explainable_recognition_of_brain_tumors_using_robust_deep_attention_CNN" target="_blank" class="pub-link"><strong>X-Brain: Explainable recognition of brain tumors using robust deep attention CNN.</strong></a><br>
                         <span style="color: var(--text-muted)">Tonmoy, M. R., Shams, M. A., et al. (2025). <em>Biomedical Signal Processing and Control (Q1 Journal, Elsevier)</em>.</span>
                     </div>
                 </div>
@@ -374,7 +404,7 @@
                 <div class="pub-item">
                     <i class="fas fa-file-alt"></i>
                     <div>
-                        <strong>Predictive Modeling and Optimization of WS2 Thin-Film Solar Cells...</strong><br>
+                        <a href="https://ideas.repec.org/a/eee/renene/v252y2025ics0960148125011814.html" target="_blank" class="pub-link"><strong>Predictive Modeling and Optimization of WS2 Thin-Film Solar Cells: A Comprehensive Study Integrating Machine Learning, Deep Learning, and SCAPS-ID Approaches.</strong></a><br>
                         <span style="color: var(--text-muted)">Khan, T. M., Shams, M. A., et al. <em>Renewable Energy (Q1 Journal, Elsevier)</em>.</span>
                     </div>
                 </div>
@@ -382,7 +412,7 @@
                 <div class="pub-item">
                     <i class="fas fa-file-alt"></i>
                     <div>
-                        <strong>A Multisectoral Study of Mpox Epidemiology, Resistance Surveillance, and Policy Gaps...</strong><br>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/41428319/" target="_blank" class="pub-link"><strong>A Multisectoral Study of Mpox Epidemiology, Resistance Surveillance, and Policy Gaps: Toward a One Health Framework.</strong></a><br>
                         <span style="color: var(--text-muted)">Mistry, D., ..., Shams, M. A., et al. <em>Clinical Reviews in Allergy & Immunology (Q1 Journal, Springer Nature)</em>.</span>
                     </div>
                 </div>
@@ -390,11 +420,28 @@
                 <div class="pub-item" style="border-bottom: none;">
                     <i class="fas fa-file-alt"></i>
                     <div>
-                        <strong>Investigating the Impact of Non-Ideal Conditions on the Performance of RbGeI3 Perovskite Solar Cell...</strong><br>
+                        <a href="https://scholar.google.com/citations?user=Sgb83LoAAAAJ&hl=en" target="_blank" class="pub-link"><strong>Investigating the Impact of Non-Ideal Conditions on the Performance of RbGeI3 Perovskite Solar Cell through a Combination of SCAPS-1D, Machine Learning and Deep Learning Approaches.</strong></a><br>
                         <span style="color: var(--text-muted)">Khan, T. M., Shams, M. A., et al. <em>Materials Advanced (Q1 Journal, Royal Society of Chemistry)</em>.</span>
                     </div>
                 </div>
+            </div>
 
+            <h3 style="margin: 20px 0 15px; color: var(--primary); font-size: 1.2rem;">Conference Proceedings</h3>
+            <div class="card">
+                <div class="pub-item">
+                    <i class="fas fa-users-cog"></i>
+                    <div>
+                        <a href="https://www.researchgate.net/publication/388372721_Wearable_Technology-Enabled_Prediction_of_Wearing-Off_Phenomenon_in_Parkinson's_Disease" target="_blank" class="pub-link"><strong>Wearable Technology-Enabled Prediction of Wearing-Off Phenomenon in Parkinson's Disease: A Personalized Approach Using LSTM-Based Time-Series Analysis.</strong></a><br>
+                        <span style="color: var(--text-muted)">Omi, M. I. H., Shams, M. A., et al. (2023). <em>5th International Conference on Activity and Behavior Computing</em>.</span>
+                    </div>
+                </div>
+                <div class="pub-item" style="border-bottom: none;">
+                    <i class="fas fa-users-cog"></i>
+                    <div>
+                        <a href="https://www.routledge.com/Activity-Behavior-and-Healthcare-Computing/Inoue-Lopez-Hossain-Ahad/p/book/9781032639185" target="_blank" class="pub-link"><strong>Enhancing Personalized Heatstroke Prevention: Forecasting Thermal Comfort Sensations Through Data-Driven Models.</strong></a><br>
+                        <span style="color: var(--text-muted)">Rahman, M. S., Asfi, Z. K., Shams, M. A., et al. (2023). <em>5th International Conference on Activity and Behavior Computing</em>.</span>
+                    </div>
+                </div>
             </div>
         </section>
 
