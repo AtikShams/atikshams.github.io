@@ -46,6 +46,7 @@
             display: flex;
             justify-content: center;
             padding: 1rem;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -195,6 +196,51 @@
             margin-bottom: 8px;
         }
 
+        /* Achievement Cards (Clickable) */
+        .achievement-card {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            color: #fbbf24; /* Gold color for awards */
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .achievement-content h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .achievement-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .view-image-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-card:hover .view-image-badge {
+            opacity: 1;
+        }
+
         /* Skills Tags */
         .skills-container {
             display: flex;
@@ -235,7 +281,6 @@
             margin-top: 5px;
         }
 
-        /* Clickable links styling */
         .pub-link {
             color: var(--text-main);
             text-decoration: none;
@@ -245,6 +290,62 @@
         .pub-link:hover {
             color: var(--primary);
             text-decoration: underline;
+        }
+
+        /* Image Modal (Lightbox) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: zoom 0.3s ease;
+        }
+
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            text-align: center;
+            color: #ccc;
+            padding: 15px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            animation: zoom 0.3s ease;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0.9); opacity:0} 
+            to {transform:scale(1); opacity:1}
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: var(--primary);
         }
 
         /* Footer */
@@ -268,6 +369,9 @@
             .date-badge {
                 margin-top: 10px;
             }
+            .modal-content {
+                max-width: 95%;
+            }
         }
     </style>
 </head>
@@ -278,6 +382,7 @@
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#publications">Publications</a>
+        <a href="#achievements">Achievements</a>
         <a href="#skills">Skills</a>
     </nav>
 
@@ -445,6 +550,85 @@
             </div>
         </section>
 
+        <section id="achievements">
+            <h2 class="section-title"><i class="fas fa-trophy"></i> Achievements & Awards</h2>
+            <div class="grid">
+                
+                <div class="card achievement-card" onclick="openModal('vc-medal.jpg', 'Vice Chancellor\'s Gold Medal')">
+                    <i class="fas fa-medal achievement-icon"></i>
+                    <div class="achievement-content">
+                        <h3>Vice Chancellor's Gold Medal</h3>
+                        <p>Awarded in the 11th Convocation of the University of Asia Pacific.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('ieee-access.jpg', 'Reviewer for IEEE Access')">
+                    <i class="fas fa-star achievement-icon" style="color: #60a5fa;"></i>
+                    <div class="achievement-content">
+                        <h3>Reviewer for IEEE Access</h3>
+                        <p>Contributed to peer review process for this Q1 Journal.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('ieee-compas.jpg', 'Reviewer for IEEE COMPAS 2025')">
+                    <i class="fas fa-certificate achievement-icon" style="color: #60a5fa;"></i>
+                    <div class="achievement-content">
+                        <h3>Reviewer for IEEE COMPAS 2025</h3>
+                        <p>Acknowledged for supporting research quality in Computing, Applications, and Systems.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('nasa.jpg', 'Top 50 - NASA Space Apps Challenge')">
+                    <i class="fas fa-rocket achievement-icon" style="color: #f43f5e;"></i>
+                    <div class="achievement-content">
+                        <h3>Top 50 Teams - NASA Space Apps Challenge 2022</h3>
+                        <p>Category: Galactic Problem-Solver.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('heatstroke.jpg', '3rd Place - Heatstroke Prevention Challenge')">
+                    <i class="fas fa-award achievement-icon" style="color: #f59e0b;"></i>
+                    <div class="achievement-content">
+                        <h3>3rd Place - Heatstroke Prevention Challenge</h3>
+                        <p>5th International Conference of Activity and Behavior Computing 2023 in Germany.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('cyber-drill.jpg', '10th Place - University Cyber Drill 2022')">
+                    <i class="fas fa-shield-alt achievement-icon" style="color: #10b981;"></i>
+                    <div class="achievement-content">
+                        <h3>10th Place - University Cyber Drill</h3>
+                        <p>Secured 10th position in the 2022 competition.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('deans-list.jpg', 'Vice Chancellor\'s & Dean\'s List')">
+                    <i class="fas fa-scroll achievement-icon" style="color: #8b5cf6;"></i>
+                    <div class="achievement-content">
+                        <h3>Vice Chancellor's & Dean's List</h3>
+                        <p>Featured on the Vice Chancellor's List seven times and Dean's List once at UAP.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+                <div class="card achievement-card" onclick="openModal('scholarship.jpg', 'Talentpool Scholarship')">
+                    <i class="fas fa-graduation-cap achievement-icon" style="color: #14b8a6;"></i>
+                    <div class="achievement-content">
+                        <h3>Talentpool Scholarship</h3>
+                        <p>Awarded in the Primary Education Completion Examination in 2011.</p>
+                    </div>
+                    <span class="view-image-badge"><i class="fas fa-image"></i> View</span>
+                </div>
+
+            </div>
+        </section>
+
         <section id="skills">
             <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Arsenal</h2>
             
@@ -472,6 +656,13 @@
                 <span class="skill-tag">Matplotlib</span>
                 <span class="skill-tag">Scikit-learn</span>
             </div>
+            
+            <h3 style="margin: 20px 0 10px; color: var(--text-muted); font-size: 1rem;">Problem Solving</h3>
+            <div class="skills-container">
+                <span class="skill-tag">Codeforces (104 Solved)</span>
+                <span class="skill-tag">URI (101 Solved)</span>
+                <span class="skill-tag">350+ Total Problems Solved</span>
+            </div>
         </section>
 
     </div>
@@ -479,6 +670,34 @@
     <footer>
         <p>&copy; 2026 Md. Atik Shams. All rights reserved.</p>
     </footer>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg" onerror="this.src='https://via.placeholder.com/800x600/2563eb/ffffff?text=Image+Not+Uploaded+Yet'">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        // Open the Modal
+        function openModal(imageSrc, captionText) {
+            document.getElementById("imageModal").style.display = "block";
+            document.getElementById("modalImg").src = imageSrc;
+            document.getElementById("caption").innerText = captionText;
+        }
+
+        // Close the Modal
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        // Close modal if user clicks outside the image
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
